@@ -6,19 +6,23 @@ import 'package:training_and_diet_app/ui/pages/meal_detail_screen.dart';
 import 'package:training_and_diet_app/ui/pages/workout_screen.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
 
+
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+   // final height = 1000;
     final width = MediaQuery.of(context).size.width;
     final today = DateTime.now();
 
     return Scaffold(
-      backgroundColor: const Color(0xFFE9E9E9),
+      
+      backgroundColor: const Color(0xFF212121),
+    
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
         child: BottomNavigationBar(
-          iconSize: 40,
+          iconSize: 26,
           selectedIconTheme: IconThemeData(
             color: const Color(0xFF200087),
           ),
@@ -26,42 +30,53 @@ class ProfileScreen extends StatelessWidget {
             color: Colors.black12,
           ),
           items: [
-            BottomNavigationBarItem(
+             BottomNavigationBarItem(
               icon: Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Icon(Icons.home),
+                child: Icon(Icons.fastfood),
+                padding: const EdgeInsets.only(top: 5.0),
               ),
               title: Text(
-                "Home",
-                style: const TextStyle(color: Colors.white),
+                "Meals",
+                style: const TextStyle(color: Colors.pink),
               ),
             ),
             BottomNavigationBarItem(
               icon: Padding(
-                child: Icon(Icons.search),
-                padding: const EdgeInsets.only(top: 8.0),
+                padding: const EdgeInsets.only(top: 5.0),
+                child: Icon(Icons.home),
               ),
               title: Text(
-                "Search",
-                style: const TextStyle(color: Colors.white),
+                "Home",
+                style: const TextStyle(color: Colors.pink),
+              ),
+            ),
+            BottomNavigationBarItem(
+              icon: Padding(
+                child: Icon(Icons.favorite),
+                padding: const EdgeInsets.only(top: 5.0),
+              ),
+              title: Text(
+                "BMI",
+                style: const TextStyle(color: Colors.pink),
               ),
             ),
             BottomNavigationBarItem(
               icon: Padding(
                 child: Icon(Icons.person),
-                padding: const EdgeInsets.only(top: 8.0),
+                padding: const EdgeInsets.only(top: 5.0),
               ),
               title: Text(
                 "Profile",
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.pink),
               ),
             ),
+           
           ],
         ),
       ),
       body: Stack(
         children: <Widget>[
-          Positioned(
+          /*Positioned(
             top: 0,
             height: height * 0.35,
             left: 0,
@@ -147,13 +162,15 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-          Positioned(
-            top: height * 0.38,
+          ),*/
+Positioned(
+            //top: height * 0.38,
+            top: 50,//height * 0.38,
             left: 0,
             right: 0,
             child: Container(
-              height: height * 0.50,
+              height: height * 0.31,
+              color: Colors.grey[900],
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -164,8 +181,8 @@ class ProfileScreen extends StatelessWidget {
                       right: 16,
                     ),
                     child: Text(
-                      "MEALS FOR TODAY",
-                      style: const TextStyle(color: Colors.blueGrey, fontSize: 16, fontWeight: FontWeight.w700),
+                      "SUGESTED MEALS WITH RECIPIES",
+                      style: const TextStyle(color: Colors.lightBlueAccent, fontSize: 16, fontWeight: FontWeight.w700),
                     ),
                   ),
                   Expanded(
@@ -185,14 +202,44 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
-                  Expanded(
+
+Text("         SELECT THE MEALS YOU ATE TODAY", style: TextStyle(
+                   // color: Theme.of(context).primaryColor,
+                    //color: Color.,
+                    color: Colors.lightBlueAccent,
+                   // fontSize: 15,
+                    //fontFamily: 'OpenSans',
+                    //fontWeight: FontWeight.bold,
+                    fontSize: 16, fontWeight: FontWeight.w700
+                  ),
+),
+
+                
+
+                  
+                ],
+              ),
+            ),
+          ),
+          Positioned( 
+             top: 350,
+            height: height * 0.15,
+            left: 0,
+            right: 0,
+            child: Container(
+             // color: Colors.blueGrey[900],
+              child: Column(
+            children: <Widget>[
+              
+              Expanded(
                     child: OpenContainer(
                       closedElevation: 0,
                       transitionType: ContainerTransitionType.fade,
+                      
                       transitionDuration: const Duration(milliseconds: 1000),
-                      closedColor: const Color(0xFFE9E9E9),
+                      closedColor: const Color(0xFF212121),
                       openBuilder: (context, _) {
                         return WorkoutScreen();
                       },
@@ -200,15 +247,18 @@ class ProfileScreen extends StatelessWidget {
                         return GestureDetector(
                           onTap: openContainer,
                           child: Container(
-                            margin: const EdgeInsets.only(bottom: 10, left: 32, right: 32),
+                            margin: const EdgeInsets.only(bottom: 80, left: 32, right: 32),
+                           //margin: const EdgeInsets.only(top: 10, bo),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(30)),
                               gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
                                 colors: [
-                                  const Color(0xFF20008B),
-                                  const Color(0xFF200087),
+                                  //const Color(0xFFBBDEFB),
+                                  //const Color(0xFFBBDEFB),
+                                  const Color(0xFFFFFFFF),
+                                  const Color(0xFFFFFFFF),
                                 ],
                               ),
                             ),
@@ -216,14 +266,14 @@ class ProfileScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 SizedBox(
-                                  width: 20,
+                                  width: 10,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 16.0, left: 16),
                                   child: Text(
-                                    "YOUR NEXT WORKOUT",
+                                    "Breakfast",
                                     style: TextStyle(
-                                      color: Colors.white70,
+                                      color: Colors.black,
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
                                     ),
@@ -231,65 +281,113 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(top: 4.0, left: 16),
-                                  child: Text(
+                                  /*child: Text(
                                     "Upper Body",
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 24,
+                                      fontSize: 12,
                                       fontWeight: FontWeight.w800,
                                     ),
-                                  ),
+                                  ),*/
                                 ),
                                 Expanded(
                                   child: Row(
                                     children: <Widget>[
                                       SizedBox(
+                                       // height: 20,
+                                        width: 10,
+                                  
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                        
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                         );
+                        },
+                    ),
+                  ),
+            ]
+              )
+
+            )
+          ),
+Positioned( 
+             top: 430,
+            height: height * 0.15,
+            left: 0,
+            right: 0,
+            child: Container(
+              child: Column(
+            children: <Widget>[
+              Expanded(
+                    child: OpenContainer(
+                      closedElevation: 0,
+                      transitionType: ContainerTransitionType.fade,
+                      transitionDuration: const Duration(milliseconds: 1000),
+                      closedColor: const Color(0xFF212121),
+                     // backgroundColor: const Color(0xFF212121),
+                      openBuilder: (context, _) {
+                        return WorkoutScreen1();
+                      },
+                      closedBuilder: (context, VoidCallback openContainer) {
+                        return GestureDetector(
+                          onTap: openContainer,
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 80, left: 32, right: 32),
+                           //margin: const EdgeInsets.only(top: 10, bo),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                 // const Color(0xFFBBDEFB),
+                                  //const Color(0xFFBBDEFB),
+                                  const Color(0xFFFFFFFF),
+                                  const Color(0xFFFFFFFF),
+                                ],
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 16.0, left: 16),
+                                  child: Text(
+                                    "Morning Snacks",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 4.0, left: 16),
+                                  /*child: Text(
+                                    "Upper Body",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),*/
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(
+                                       // height: 20,
                                         width: 20,
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                                          color: const Color(0xFF5B4D9D),
-                                        ),
-                                        padding: const EdgeInsets.all(10),
-                                        child: Image.asset(
-                                          "assets/chest.png",
-                                          width: 50,
-                                          height: 50,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                                          color: const Color(0xFF5B4D9D),
-                                        ),
-                                        padding: const EdgeInsets.all(10),
-                                        child: Image.asset(
-                                          "assets/back.png",
-                                          width: 50,
-                                          height: 50,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.all(Radius.circular(25)),
-                                          color: const Color(0xFF5B4D9D),
-                                        ),
-                                        padding: const EdgeInsets.all(10),
-                                        child: Image.asset(
-                                          "assets/biceps.png",
-                                          width: 50,
-                                          height: 50,
-                                          color: Colors.white,
-                                        ),
                                       ),
                                       SizedBox(
                                         width: 10,
@@ -300,14 +398,288 @@ class ProfileScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                        );
-                      },
+                         );
+                        },
                     ),
                   ),
-                ],
-              ),
-            ),
+            ]
+              )
+
+            )
           ),
+          Positioned( 
+             top: 510,
+            height: height * 0.15,
+            left: 0,
+            right: 0,
+            child: Container(
+              child: Column(
+            children: <Widget>[
+              Expanded(
+                    child: OpenContainer(
+                      closedElevation: 0,
+                      transitionType: ContainerTransitionType.fade,
+                      transitionDuration: const Duration(milliseconds: 1000),
+                      closedColor: const Color(0xFF212121),
+                      openBuilder: (context, _) {
+                        return WorkoutScreen2();
+                      },
+                      closedBuilder: (context, VoidCallback openContainer) {
+                        return GestureDetector(
+                          onTap: openContainer,
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 80, left: 32, right: 32),
+                           //margin: const EdgeInsets.only(top: 10, bo),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                //  const Color(0xFFBBDEFB),
+                                 // const Color(0xFFBBDEFB),
+                                 const Color(0xFFFFFFFF),
+                                  const Color(0xFFFFFFFF),
+                                ],
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 16.0, left: 16),
+                                  child: Text(
+                                    "Lunch",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 4.0, left: 16),
+                                  /*child: Text(
+                                    "Upper Body",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),*/
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(
+                                       // height: 20,
+                                        width: 20,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                         );
+                        },
+                    ),
+                  ),
+            ]
+              )
+
+            )
+          ),
+          Positioned( 
+             top: 590,
+            height: height * 0.15,
+            left: 0,
+            right: 0,
+            child: Container(
+              child: Column(
+            children: <Widget>[
+              Expanded(
+                    child: OpenContainer(
+                      closedElevation: 0,
+                      transitionType: ContainerTransitionType.fade,
+                      transitionDuration: const Duration(milliseconds: 1000),
+                      closedColor: const Color(0xFF212121),
+                      openBuilder: (context, _) {
+                        return WorkoutScreen3();
+                      },
+                      closedBuilder: (context, VoidCallback openContainer) {
+                        return GestureDetector(
+                          onTap: openContainer,
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 80, left: 32, right: 32),
+                           //margin: const EdgeInsets.only(top: 10, bo),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                 // const Color(0xFFBBDEFB),
+                                  //const Color(0xFFBBDEFB),
+                                  const Color(0xFFFFFFFF),
+                                  const Color(0xFFFFFFFF),
+                                ],
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 16.0, left: 16),
+                                  child: Text(
+                                    "Evening Snacks",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 4.0, left: 16),
+                                  /*child: Text(
+                                    "Upper Body",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),*/
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(
+                                       // height: 20,
+                                        width: 20,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                         );
+                        },
+                    ),
+                  ),
+            ]
+              )
+
+            )
+          ),
+          Positioned( 
+             top: 670,
+            height: height * 0.15,
+            left: 0,
+            right: 0,
+            child: Container(
+              child: Column(
+            children: <Widget>[
+              Expanded(
+                    child: OpenContainer(
+                      closedElevation: 0,
+                      transitionType: ContainerTransitionType.fade,
+                      transitionDuration: const Duration(milliseconds: 1000),
+                      closedColor: const Color(0xFF212121),
+                      openBuilder: (context, _) {
+                        return WorkoutScreen4();
+                      },
+                      closedBuilder: (context, VoidCallback openContainer) {
+                        return GestureDetector(
+                          onTap: openContainer,
+                          child: Container(
+                            margin: const EdgeInsets.only(bottom: 80, left: 32, right: 32),
+                           //margin: const EdgeInsets.only(top: 10, bo),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(30)),
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                 // const Color(0xFFBBDEFB),
+                                  //const Color(0xFFBBDEFB),
+                                  const Color(0xFFFFFFFF),
+                                  const Color(0xFFFFFFFF),
+                                ],
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 16.0, left: 16),
+                                  child: Text(
+                                    "Dinner",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 4.0, left: 16),
+                                  /*child: Text(
+                                    "Upper Body",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),*/
+                                ),
+                                Expanded(
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(
+                                       // height: 20,
+                                        width: 20,
+                                      ),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                         );
+                        },
+                    ),
+                  ),
+            ]
+              )
+
+            )
+          )
+
+
+
+
+
+
         ],
       ),
     );
